@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="433.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_proje_fx.controller.EmployeePageController">
+
+    <!-- Sol tarafta menü -->
+    <left>
+        <VBox prefHeight="434.0" prefWidth="139.0" spacing="10" style="-fx-padding: 10; -fx-background-color: #F0F0F0;">
+            <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="Özellikler" />
+            <Button style="-fx-pref-width: 120;" text="Hasarlar" onAction="#onHasarlarClicked"/>
+            <Button style="-fx-pref-width: 120;" text="Rapor Ekle" onAction="#onRaporEkleClicked"/>
+            <Button style="-fx-pref-width: 120;" text="Menu item" />
+            <Button style="-fx-pref-width: 120;" text="Menu item" />
+            <Button style="-fx-pref-width: 120;" text="Menu item" />
+        </VBox>
+    </left>
+
+    <center>
+        <VBox prefHeight="665.0" prefWidth="357.0" spacing="10" style="-fx-padding: 10;">
+            <Label style="-fx-font-size:18;" text="Hoş geldiniz. Sol menüden seçim yapınız." />
+            <!-- Buraya tablo, arama kutusu, vb. içerik eklenebilir -->
+        </VBox>
+    </center>
+</BorderPane>
