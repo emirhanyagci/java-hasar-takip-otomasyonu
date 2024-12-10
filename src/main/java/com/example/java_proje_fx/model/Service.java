@@ -28,17 +28,17 @@ public class Service {
     String getModelId(){
         return this.expertModel.getId();
     }
-    void addDamageDoc(Damage damageDoc){
+    public void addDamageDoc(Damage damageDoc){
         damageDocs.add(damageDoc);
     }
-    void listDamageDocs(){
+    public void listDamageDocs(){
         for(Damage damageDoc : damageDocs){
             System.out.println(damageDoc.damageDetails);
             System.out.println(damageDoc.status);
 
         }
     }
-    void changeDamageDocStatus(User user, String docId, StatusType status){
+    public void changeDamageDocStatus(User user, String docId, StatusType status){
         if(user.isEmployee()){
             for(Damage damageDoc : damageDocs){
                 if(damageDoc.getId().equals(docId)){
@@ -49,7 +49,7 @@ public class Service {
             System.out.println("Sadece calisanlar bu islemi yapabilir");
         }
     }
-    Raport createRaportDoc(User user, Damage damageDoc){
+    public Raport createRaportDoc(User user, Damage damageDoc){
         if(user.isEmployee()){
             Raport raportDoc = new Raport(user,"Sag on far parca degisimi yapilmistir ve sag on kapi acilmama sorunu giderilmistir",0,damageDoc);
             raportDocs.add(raportDoc);

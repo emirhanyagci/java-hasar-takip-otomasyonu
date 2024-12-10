@@ -12,7 +12,7 @@ public class Damage extends Doc{
         this.id = UUID.randomUUID().toString();
         this.damageDetails = damageDetails;
     }
-    String getId(){
+    public String getId(){
         return this.id;
     }
 }

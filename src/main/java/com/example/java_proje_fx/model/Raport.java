@@ -1,7 +1,7 @@
 package com.example.java_proje_fx.model;
 
 public class Raport extends Doc{
-    String serviceMessage;
+    public String serviceMessage;
     Damage damageDoc;
     int price;
 
