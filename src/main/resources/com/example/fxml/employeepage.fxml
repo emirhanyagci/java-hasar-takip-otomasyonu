@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="433.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_proje_fx.controller.EmployeePageController">
+<BorderPane fx:id="mainBorderPane" prefHeight="433.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_proje_fx.controller.EmployeePageController">
 
     <!-- Sol tarafta menü -->
     <left>

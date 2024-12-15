@@ -6,13 +6,13 @@
 
 <VBox prefHeight="507.0" prefWidth="566.0" spacing="10" style="-fx-padding:10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_proje_fx.controller.HasarlarController">
     <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="Hasar Detayları" />
-    <TableView fx:id="hasarTable">
+    <TableView fx:id="mainBorderPane">
       <columns>
-         <TableColumn prefWidth="110.0" text="Damage Details" />
-         <TableColumn prefWidth="40.0" text="ID" />
-         <TableColumn prefWidth="75.0" text="Status" />
-         <TableColumn prefWidth="75.0" text="Tarih" />
-         <TableColumn prefWidth="75.0" text="Customer"/>
+          <TableColumn fx:id="idColumn" text="ID" />
+          <TableColumn fx:id="statusColumn" text="ID" />
+          <TableColumn fx:id="detailsColumn" text="ID" />
+          <TableColumn fx:id="customerColumn" text="ID" />
+          <TableColumn fx:id="dateColumn" text="ID" />
       </columns></TableView>
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>

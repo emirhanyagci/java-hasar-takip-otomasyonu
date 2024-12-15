@@ -31,6 +31,7 @@ public class HasarlarController {
     private TableColumn<Damage, String> customerColumn;
     @FXML
     private TableColumn<Damage, Date> dateColumn;
+
     private Employee employee;
 
     @FXML

@@ -10,23 +10,34 @@ import javafx.scene.layout.VBox;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+
 
 public class EmployeePageController {
+
     public TableView hasarTable;
+
     @FXML
     private VBox centerContainer;
+
+    @FXML
+    private BorderPane mainBorderPane;
+
     private Employee employee;
 
     @FXML
     private void onHasarlarClicked() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/hasarlar.fxml"));
-        Parent hasarlarContent = loader.load();
-        HasarlarController controller = loader.getController();
+
+
+        Pane hasarlarContent = loader.load();
+        mainBorderPane.setCenter(hasarlarContent);
 
         Model ilk = new Model("Mercedes");
+
         // Verileri servis katmanından çekiyoruz.
         Service service = new Service("ave","marmara",ilk);
-        controller.loadData(service.getDamageDocs());
 
         centerContainer.getChildren().setAll(hasarlarContent);
     }
