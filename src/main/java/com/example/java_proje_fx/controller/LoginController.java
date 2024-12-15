@@ -1,5 +1,7 @@
 package com.example.java_proje_fx.controller;
 
+import com.example.java_proje_fx.model.Customer;
+import com.example.java_proje_fx.model.Employee;
 import com.example.java_proje_fx.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class LoginController {
 
@@ -19,6 +22,8 @@ public class LoginController {
 
     @FXML
     private PasswordField passwordField;
+
+    private static final HashMap<String, User> USERS = new HashMap<>();
 
     @FXML
     public void initialize() {
@@ -36,17 +41,24 @@ public class LoginController {
             }
         });
     }
-
+    static {
+        USERS.put("employee1", new Employee("Emre", "Coruhlu", null));
+        USERS.put("customer1", new Customer("Emirhan", "Yagci", null));
+    }
 
     @FXML
     private void handleLoginButton() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (isValidUser(username, password)) { // Doğrulama metodu
-            User user = new User(username, "admin@example.com");
-            user.notEkle("ilk");
-            openUserboard(user);
+        User user = USERS.get(username);
+
+        if (user != null && "12345".equals(password)) { // Şifre kontrolü basit bir şekilde yapılabilir
+            if (user.isEmployee()) {
+                openEmployeeBoard((Employee) user);
+            } else {
+                openCustomerBoard(user);
+            }
         } else {
             showAlert(Alert.AlertType.ERROR, "Giriş Hatası", "Kullanıcı adı veya şifre yanlış.");
             usernameField.clear(); // Kullanıcı adı kutusunu temizle
@@ -69,17 +81,19 @@ public class LoginController {
     }
 
 
-    private void openUserboard(User user) {
+    private void openEmployeeBoard(Employee employee) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userboard.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/fxml/employeepage.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
             // Controller'ı al ve kullanıcı bilgilerini gönder
-            UserboardController controller = fxmlLoader.getController();
-            controller.setUser(user);
+            EmployeePageController controller = fxmlLoader.getController();
+            controller.setEmployee(employee);
+
+            controller.setEmployee(employee);
 
             Stage stage = new Stage();
-            stage.setTitle("userboard");
+            stage.setTitle("Çalışan Paneli");
             stage.setScene(scene);
             stage.show();
 
@@ -90,5 +104,8 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void openCustomerBoard(User user) {
     }
 }

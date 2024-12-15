@@ -1,10 +1,17 @@
 package com.example.java_proje_fx;
 
 import com.example.java_proje_fx.model.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+public class Main extends Application {
     public static void main(String[] args) {
         Insurance alianz = new Insurance("Alianz");
         Model bmw = new Model("BMW");
@@ -23,7 +30,29 @@ public class Main {
         Raport rapor = bostanci_servis.createRaportDoc(emre,hasar);
         System.out.println(rapor.serviceMessage);
         bostanci_servis.listDamageDocs();
-
+        launch(args);
 
     }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/fxml/login.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            primaryStage.setTitle("Kullanıcı Girişi");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorAndExit("Uygulama yüklenirken bir hata oluştu.");
+        }
+    }
+    private void showErrorAndExit(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Hata");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 }

@@ -38,6 +38,11 @@ public class Service {
 
         }
     }
+
+    public ArrayList<Damage> getDamageDocs() {
+        return damageDocs;
+    }
+
     public void changeDamageDocStatus(User user, String docId, StatusType status){
         if(user.isEmployee()){
             for(Damage damageDoc : damageDocs){
