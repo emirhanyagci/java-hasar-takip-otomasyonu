@@ -30,22 +30,30 @@ public class EmployeePageController {
     private void onHasarlarClicked() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/hasarlar.fxml"));
 
-
         Pane hasarlarContent = loader.load();
         mainBorderPane.setCenter(hasarlarContent);
 
-        Model ilk = new Model("Mercedes");
+//        Model ilk = new Model("Mercedes");
+//
+//        // Verileri servis katmanından çekiyoruz.
+//        Service service = new Service("ave","marmara",ilk);
 
-        // Verileri servis katmanından çekiyoruz.
-        Service service = new Service("ave","marmara",ilk);
+        //centerContainer.getChildren().setAll(hasarlarContent);
 
-        centerContainer.getChildren().setAll(hasarlarContent);
+        HasarlarController  controller = loader.getController();
+        controller.setEmployee(employee);
     }
 
     @FXML
     private void onRaporEkleClicked() throws IOException {
-        Parent raporContent = FXMLLoader.load(getClass().getResource("/com/example/fxml/raporekle.fxml"));
-        centerContainer.getChildren().setAll(raporContent);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/raporekle.fxml"));
+
+        Pane raporContent = loader.load();
+
+        mainBorderPane.setCenter(raporContent);
+
+        //centerContainer.getChildren().setAll(raporContent);
+
     }
 
 

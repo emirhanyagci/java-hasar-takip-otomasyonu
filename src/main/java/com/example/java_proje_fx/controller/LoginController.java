@@ -2,6 +2,7 @@ package com.example.java_proje_fx.controller;
 
 import com.example.java_proje_fx.model.Customer;
 import com.example.java_proje_fx.model.Employee;
+import com.example.java_proje_fx.model.Service;
 import com.example.java_proje_fx.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,20 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+
     private static final HashMap<String, User> USERS = new HashMap<>();
+
+    static Service bostanci_servis;
+
+    public void setService(Service service) {
+        this.bostanci_servis = service;
+    }
+
+    public void addUser(String username, User user) {
+        USERS.put(username, user);
+        System.out.println("Kullanıcı eklendi: " + username + " -> " + user);
+        System.out.println("Tüm kullanıcılar: " + USERS.keySet());
+    }
 
     @FXML
     public void initialize() {
@@ -40,10 +54,6 @@ public class LoginController {
                 handleLoginButton();
             }
         });
-    }
-    static {
-        USERS.put("employee1", new Employee("Emre", "Coruhlu", null));
-        USERS.put("customer1", new Customer("Emirhan", "Yagci", null));
     }
 
     @FXML
@@ -88,8 +98,6 @@ public class LoginController {
 
             // Controller'ı al ve kullanıcı bilgilerini gönder
             EmployeePageController controller = fxmlLoader.getController();
-            controller.setEmployee(employee);
-
             controller.setEmployee(employee);
 
             Stage stage = new Stage();

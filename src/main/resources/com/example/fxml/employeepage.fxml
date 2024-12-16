@@ -18,7 +18,7 @@
     </left>
 
     <center>
-        <VBox prefHeight="665.0" prefWidth="357.0" spacing="10" style="-fx-padding: 10;">
+        <VBox fx:id="centerContainer" prefHeight="665.0" prefWidth="357.0" spacing="10" style="-fx-padding: 10;">
             <Label style="-fx-font-size:18;" text="Hoş geldiniz. Sol menüden seçim yapınız." />
             <!-- Buraya tablo, arama kutusu, vb. içerik eklenebilir -->
         </VBox>

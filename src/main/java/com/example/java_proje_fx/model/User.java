@@ -23,6 +23,7 @@ abstract public class User {
     void userInfo(){
         System.out.println("Name:"+firstName+"Surname:"+lastName);
     }
+
     public boolean controlUser(String input_id,String input_password){
         return input_id.equals(this.id) && input_password.equals(this.password);
     }

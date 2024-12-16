@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox prefHeight="617.0" prefWidth="705.0" spacing="10" style="-fx-padding:10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_proje_fx.controller.EmployeePageController">
+<VBox prefHeight="617.0" prefWidth="705.0" spacing="10" style="-fx-padding:10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_proje_fx.controller.EmployeePageController">
     <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="Rapor Ekle" />
    <Label text="Customer Info" />
    <HBox prefHeight="70.0" prefWidth="653.0">
@@ -65,5 +60,5 @@
    </HBox>
    <Label text="Damage Doc" />
    <DatePicker />
-    <Button onAction="#onKaydetClicked" text="Kaydet" />
+    <Button text="Kaydet" />
 </VBox>

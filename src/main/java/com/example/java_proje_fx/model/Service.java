@@ -8,8 +8,8 @@ public class Service {
     String name;
     String address;
     private Model expertModel;
-    private ArrayList<Damage> damageDocs;
-    private ArrayList<Raport> raportDocs;
+    public ArrayList<Damage> damageDocs;
+    public ArrayList<Raport> raportDocs;
     public Service(String name, String address, Model model) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
@@ -31,12 +31,13 @@ public class Service {
     public void addDamageDoc(Damage damageDoc){
         damageDocs.add(damageDoc);
     }
-    public void listDamageDocs(){
+    public boolean listDamageDocs(){
         for(Damage damageDoc : damageDocs){
             System.out.println(damageDoc.damageDetails);
             System.out.println(damageDoc.status);
 
         }
+        return false;
     }
 
     public ArrayList<Damage> getDamageDocs() {
