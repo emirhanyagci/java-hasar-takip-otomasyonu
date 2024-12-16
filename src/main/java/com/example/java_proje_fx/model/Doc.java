@@ -5,7 +5,7 @@ import java.util.UUID;
 
 abstract public class Doc {
     String id;
-    Date createdAt;
+    public Date createdAt;
     User user;
 
     public Doc(User user) {

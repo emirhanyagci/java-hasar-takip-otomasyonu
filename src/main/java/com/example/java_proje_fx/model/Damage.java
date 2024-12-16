@@ -5,7 +5,7 @@ import java.util.UUID;
 public class Damage extends Doc{
     private String id;
     String damageDetails;
-    StatusType status;
+    public StatusType status;
     public Damage(Customer user, String damageDetails) {
         super(user);
         status = StatusType.PENDING;

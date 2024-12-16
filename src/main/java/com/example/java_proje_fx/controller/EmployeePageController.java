@@ -27,22 +27,26 @@ public class EmployeePageController {
     private Employee employee;
 
     @FXML
-    private void onHasarlarClicked() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/hasarlar.fxml"));
+    private void onHasarlarClicked() {
+        try {
+            // FXML dosyasını yükle
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/hasarlar.fxml"));
+            VBox hasarlarContent = loader.load();
 
-        Pane hasarlarContent = loader.load();
-        mainBorderPane.setCenter(hasarlarContent);
+            // Controller'ı al ve çalışan bilgisini gönder
+            HasarlarController controller = loader.getController();
+            if (employee != null) {
+                controller.loadData(employee.getService().getDamageDocs());
+            }
 
-//        Model ilk = new Model("Mercedes");
-//
-//        // Verileri servis katmanından çekiyoruz.
-//        Service service = new Service("ave","marmara",ilk);
+            // Center bölgesine yerleştir
+            mainBorderPane.setCenter(hasarlarContent);
 
-        //centerContainer.getChildren().setAll(hasarlarContent);
-
-        HasarlarController  controller = loader.getController();
-        controller.setEmployee(employee);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     private void onRaporEkleClicked() throws IOException {

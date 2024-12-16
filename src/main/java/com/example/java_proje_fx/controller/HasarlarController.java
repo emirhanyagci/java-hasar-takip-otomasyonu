@@ -1,89 +1,80 @@
 package com.example.java_proje_fx.controller;
 
-import com.example.java_proje_fx.model.*;
-
-import javafx.beans.property.ReadOnlyObjectWrapper;
+import com.example.java_proje_fx.model.Damage;
+import com.example.java_proje_fx.model.StatusType;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class HasarlarController {
-    @FXML
-    private VBox centerContainer;
 
     @FXML
     private TableView<Damage> hasarTable;
+
     @FXML
-    private TableColumn<Damage, Number> idColumn;
-    @FXML
-    private TableColumn<Damage, StatusType> statusColumn;
+    private TableColumn<Damage, String> idColumn;
+
     @FXML
     private TableColumn<Damage, String> detailsColumn;
-    @FXML
-    private TableColumn<Damage, String> customerColumn;
-    @FXML
-    private TableColumn<Damage, Date> dateColumn;
 
-    private Employee employee;
+    @FXML
+    private TableColumn<Damage, String> statusColumn;
+
+    @FXML
+    private TableColumn<Damage, String> dateColumn;
+
+    private ObservableList<Damage> hasarlarListesi = FXCollections.observableArrayList();
+
 
     @FXML
     public void initialize() {
-        //idColumn.setCellValueFactory(new PropertyValueFactory<>("hasarId"));
-        //statusColumn.setCellValueFactory(new PropertyValueFactory<>("hasarDurumu"));
-        //detailsColumn.setCellValueFactory(new PropertyValueFactory<>("hasarAciklama"));
-        //customerColumn.setCellValueFactory(new PropertyValueFactory<>("musteriAciklama"));
-        statusColumn.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getStatus()));
-        detailsColumn.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getDamageDetails()));
+        // Kolonlara özellik bağlama
+//        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+//        detailsColumn.setCellValueFactory(new PropertyValueFactory<>("damageDetails"));
 
-        List<Damage> hasarlarListesi = employee.getService().getDamageDocs();
+        idColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getId().toString()));
 
-        ObservableList<Damage> observablePersonList = FXCollections.observableArrayList(hasarlarListesi);
+        detailsColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getDamageDetails().toString()));
 
-        hasarTable.setItems(observablePersonList);
+        statusColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getStatus().toString()));
+        dateColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(formatDate(cellData.getValue().createdAt)));
+
+        // Test verileriyle tabloyu doldurma
+        ObservableList<Damage> hasarlarListesi = FXCollections.observableArrayList(
+                new Damage(null, "Arka tampon ezildi"),
+                new Damage(null, "Sağ ön kapı çizik")
+        );
+        hasarTable.setItems(hasarlarListesi);
     }
 
     public void loadData(ArrayList<Damage> hasarList) {
-        hasarTable.getItems().setAll(hasarList);
+        hasarlarListesi.setAll(hasarList);
     }
 
-    public void setEmployee(Employee employee){
-        this.employee = employee;
-        updateUI(employee);
-    }
-    private void updateUI(Employee employee) {
-        // Parametreleri FXML bileşenlerine yazdır
-        if (this.employee != null) {
-//            List<Damage> hasarlarListesi = new ArrayList<>();
-//            hasarlarListesi = employee.getService().getDamageDocs();
-//
-//            employee.getService().listDamageDocs();
-//
-//
-//            System.out.println("burasi    a");
-//            System.out.println(hasarlarListesi);
-//
-//            ObservableList<Damage> observablePersonList = FXCollections.observableArrayList(hasarlarListesi);
-//
-//            hasarTable.setItems(observablePersonList);
-            // IDE ObservableList önerdi
-
-            statusColumn.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getStatus()));
-            detailsColumn.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getDamageDetails()));
-
-            ArrayList<Damage> hasarlarListesi = employee.getService().getDamageDocs();
-
-            ObservableList<Damage> observablePersonList = FXCollections.observableArrayList(hasarlarListesi);
-
-            hasarTable.setItems(observablePersonList);
-        }
+    private String formatDate(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        return formatter.format(date);
     }
 
+    private void testData() {
+        // Örnek veri ekleme
+        Damage d1 = new Damage(null, "Arka tampon ezildi");
+        Damage d2 = new Damage(null, "Sağ ön kapı çizik");
+        d1.status = StatusType.ACCEPTED;
+        d2.status = StatusType.COMPLETED;
+        hasarlarListesi.add(d1);
+        hasarlarListesi.add(d2);
+    }
 }
