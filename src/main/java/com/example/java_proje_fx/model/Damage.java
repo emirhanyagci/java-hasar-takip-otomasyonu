@@ -12,6 +12,15 @@ public class Damage extends Doc{
         this.id = UUID.randomUUID().toString();
         this.damageDetails = damageDetails;
     }
+
+    public String getDamageDetails() {
+        return damageDetails;
+    }
+
+    public StatusType getStatus() {
+        return status;
+    }
+
     public String getId(){
         return this.id;
     }
