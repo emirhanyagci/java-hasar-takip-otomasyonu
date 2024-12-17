@@ -14,37 +14,15 @@
             <TableColumn text="Details" fx:id="detailsColumn" />
             <TableColumn text="Status" fx:id="statusColumn" />
             <TableColumn text="Date" fx:id="dateColumn" />
-        </columns>
-    </TableView>
-    <!--
-    <TableView fx:id="hasarTable">
-      <columns>
-            <TableColumn fx:id="idColumn" text="ID" />
-            <TableColumn fx:id="statusColumn" text="status" >
-                <cellValueFactory>
-                    <PropertyValueFactory property="status"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="detailsColumn" text="details" >
-                <cellValueFactory>
-                    <PropertyValueFactory property="damageDetails"/>
-                </cellValueFactory>
-            </TableColumn>
-           <TableColumn fx:id="customerColumn" text="customer" />
-      </columns></TableView>
-    -->
+            <!-- <TableColumn text="Customer ID" fx:id="customerIdColumn" /> -->
+            <TableColumn text="Customer Name" fx:id="customerNameColumn" />
+            <TableColumn text="Car Name" fx:id="carNameColumn" />
+</columns>
 
+</TableView>
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>
-          <Button text="Yeni Hasar Oluştur">
-            <HBox.margin>
-               <Insets left="5.0" right="5.0" />
-            </HBox.margin>
-            <padding>
-               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-            </padding>
-         </Button>
-         <Button layoutX="10.0" layoutY="10.0" text="Rapor Ekle">
+         <Button onAction="#onRaporEkleClicked" layoutX="10.0" layoutY="10.0" text="Rapor Ekle">
             <HBox.margin>
                <Insets left="5.0" right="5.0" />
             </HBox.margin>

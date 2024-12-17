@@ -5,6 +5,7 @@ import com.example.java_proje_fx.model.Model;
 import com.example.java_proje_fx.model.Service;
 import com.example.java_proje_fx.model.User;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.scene.Parent;
@@ -19,7 +20,7 @@ public class EmployeePageController {
     public TableView hasarTable;
 
     @FXML
-    private VBox centerContainer;
+    private Label servisAdi;
 
     @FXML
     private BorderPane mainBorderPane;
@@ -63,5 +64,7 @@ public class EmployeePageController {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+        servisAdi.setText(employee.getService().getName());
+
     }
 }

@@ -16,4 +16,18 @@ public class Customer extends User {
     public String getModelId(){
         return this.car.getModelId();
     }
+
+    public Car getCar() {
+        return car;
+    }
+
+    @Override
+    public String getFirstName() {
+        return super.getFirstName();
+    }
+
+    @Override
+    public String getLastName() {
+        return super.getLastName();
+    }
 }

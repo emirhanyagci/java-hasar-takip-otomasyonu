@@ -24,4 +24,11 @@ public class Damage extends Doc{
     public String getId(){
         return this.id;
     }
+
+    public Customer getCustomer(){
+        if (this.user instanceof Customer) {
+            return (Customer) this.user;
+        }
+        return null;
+    }
 }

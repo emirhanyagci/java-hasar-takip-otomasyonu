@@ -1,15 +1,20 @@
 package com.example.java_proje_fx.controller;
 
 import com.example.java_proje_fx.model.Damage;
+import com.example.java_proje_fx.model.Employee;
 import com.example.java_proje_fx.model.StatusType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,8 +36,21 @@ public class HasarlarController {
     @FXML
     private TableColumn<Damage, String> dateColumn;
 
+    @FXML
+    private TableColumn<Damage, String> customerIdColumn;
+
+    @FXML
+    private TableColumn<Damage, String> customerNameColumn;
+
+    @FXML
+    private TableColumn<Damage, String> carNameColumn;
+
+    @FXML
+    private TableColumn<Damage, String> carYearColumn;
+
     private ObservableList<Damage> hasarlarListesi = FXCollections.observableArrayList();
 
+    Employee employee;
 
     @FXML
     public void initialize() {
@@ -48,14 +66,29 @@ public class HasarlarController {
 
         statusColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getStatus().toString()));
+
         dateColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(formatDate(cellData.getValue().createdAt)));
 
+//        customerIdColumn.setCellValueFactory(cellData ->
+//                new SimpleStringProperty(cellData.getValue().getCustomer().getId()));
+
+        customerNameColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getCustomer().getFirstName() + cellData.getValue().getCustomer().getLastName()));
+
+        carNameColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getCustomer().getCar().getName()));
+
+//        carYearColumn.setCellValueFactory(cellData ->
+//                new SimpleStringProperty(cellData.getValue().getCustomer().getCar().getYear()));
+
+
+        //eğer yorum satırı olmazsa employee'nin verilerinin üstüne yazar, employee'ninkiler gözükmez
         // Test verileriyle tabloyu doldurma
-        ObservableList<Damage> hasarlarListesi = FXCollections.observableArrayList(
-                new Damage(null, "Arka tampon ezildi"),
-                new Damage(null, "Sağ ön kapı çizik")
-        );
+//        ObservableList<Damage> hasarlarListesi = FXCollections.observableArrayList(
+//                new Damage(null, "Arka tampon ezildi"),
+//                new Damage(null, "Sağ ön kapı çizik")
+//        );
         hasarTable.setItems(hasarlarListesi);
     }
 
@@ -63,11 +96,48 @@ public class HasarlarController {
         hasarlarListesi.setAll(hasarList);
     }
 
+
+
     private String formatDate(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         return formatter.format(date);
     }
 
+    @FXML
+    private void onRaporEkleClicked() {
+        // Tablo üzerinden seçili nesneye eriş
+        Damage selectedDamage = hasarTable.getSelectionModel().getSelectedItem();
+
+        if (selectedDamage != null) {
+            // Yeni pencere aç ve detayları göster
+            showRaporEkle(selectedDamage);
+        } else {
+            System.out.println("Lütfen bir satır seçin.");
+        }
+    }
+
+    private void showRaporEkle(Damage damage) {
+        try {
+            // FXML dosyasını yükle
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/raporekle.fxml"));
+            Parent root = loader.load();
+
+            // Controller'ı al ve veriyi ilet
+            RaporEkleController controller = loader.getController();
+            controller.setRaporEkle(damage);
+
+            // Yeni sahne oluştur
+            Stage stage = new Stage();
+            stage.setTitle("Hasar Detayları");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //deneme verileri oluşturucu
     private void testData() {
         // Örnek veri ekleme
         Damage d1 = new Damage(null, "Arka tampon ezildi");

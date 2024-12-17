@@ -27,4 +27,12 @@ abstract public class User {
     public boolean controlUser(String input_id,String input_password){
         return input_id.equals(this.id) && input_password.equals(this.password);
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }

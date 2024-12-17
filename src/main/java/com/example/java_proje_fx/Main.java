@@ -50,9 +50,10 @@ public class Main extends Application {
             Scene scene = new Scene(fxmlLoader.load());
 
             LoginController loginController = fxmlLoader.getController();
+
             Insurance alianz = new Insurance("Alianz");
             Model bmw = new Model("BMW");
-            Car i8 = new Car("I8 Premium",2024,bmw);
+            Car i8 = new Car("I8 Premium","2024",bmw);
 
             Customer emirhan = new Customer("Emirhan","Yagci",i8);
 

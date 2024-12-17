@@ -28,6 +28,11 @@ public class Service {
     String getModelId(){
         return this.expertModel.getId();
     }
+
+    public String getName() {
+        return name;
+    }
+
     public void addDamageDoc(Damage damageDoc){
         damageDocs.add(damageDoc);
     }
