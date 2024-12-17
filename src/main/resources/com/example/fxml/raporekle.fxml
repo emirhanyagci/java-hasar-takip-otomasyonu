@@ -68,5 +68,15 @@
          </TextField>
       </children>
    </HBox>
-    <Button text="Kaydet" />
+   <Label text="Raport " />
+   <HBox prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <TextField fx:id="raporAdiField24" prefHeight="100.0" prefWidth="400.0" promptText="Raport Details">
+            <HBox.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </HBox.margin>
+         </TextField>
+      </children>
+   </HBox>
+    <Button onAction="#onRaporEkleKaydet" text="Kaydet" />
 </VBox>

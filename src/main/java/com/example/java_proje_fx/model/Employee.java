@@ -3,7 +3,7 @@ package com.example.java_proje_fx.model;
 public class Employee extends User{
     private Service service;
     public Employee(String firstName, String lastName,Service service){
-        super();
+        super(firstName, lastName);
         this.service =service;
     }
     @Override

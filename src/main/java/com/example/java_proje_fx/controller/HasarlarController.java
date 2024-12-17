@@ -104,9 +104,15 @@ public class HasarlarController {
     }
 
     @FXML
-    private void onRaporEkleClicked() {
+    private void onRaporEkleClicked() throws IOException {
         // Tablo üzerinden seçili nesneye eriş
         Damage selectedDamage = hasarTable.getSelectionModel().getSelectedItem();
+
+        // hasarlardan damage nesnesini al rapor ekleye o nesneyi at
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/raporekle.fxml"));
+        Parent root = loader.load();
+        RaporEkleController controller = loader.getController();
+        controller.setEmployee(employee);
 
         if (selectedDamage != null) {
             // Yeni pencere aç ve detayları göster
@@ -125,6 +131,8 @@ public class HasarlarController {
             // Controller'ı al ve veriyi ilet
             RaporEkleController controller = loader.getController();
             controller.setRaporEkle(damage);
+            controller.setEmployee(employee);
+            controller.setDamage(damage);
 
             // Yeni sahne oluştur
             Stage stage = new Stage();
@@ -137,6 +145,8 @@ public class HasarlarController {
         }
     }
 
+
+
     //deneme verileri oluşturucu
     private void testData() {
         // Örnek veri ekleme
@@ -147,4 +157,9 @@ public class HasarlarController {
         hasarlarListesi.add(d1);
         hasarlarListesi.add(d2);
     }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
 }

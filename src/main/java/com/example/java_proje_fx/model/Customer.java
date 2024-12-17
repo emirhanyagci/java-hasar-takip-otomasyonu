@@ -6,7 +6,7 @@ public class Customer extends User {
     private String id;
     private Car car;
     public Customer(String firstName, String lastName,Car car){
-        super();
+        super(firstName, lastName);
         this.id = UUID.randomUUID().toString();
         this.car = car;
     }

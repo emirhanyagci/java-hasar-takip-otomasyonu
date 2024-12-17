@@ -60,15 +60,23 @@ public class Service {
             System.out.println("Sadece calisanlar bu islemi yapabilir");
         }
     }
-    public Raport createRaportDoc(User user, Damage damageDoc){
+    public Raport createRaportDoc(User user, String serviceMasage, Integer price, Damage damageDoc){
         if(user.isEmployee()){
-            Raport raportDoc = new Raport(user,"Sag on far parca degisimi yapilmistir ve sag on kapi acilmama sorunu giderilmistir",0,damageDoc);
+            Raport raportDoc = new Raport(user,serviceMasage,price,damageDoc);
             raportDocs.add(raportDoc);
             return raportDoc;
         }else{
             System.out.println("Sadece calisanlar bu islemi yapabilir");
             return null;
         }
-
     }
+    public boolean listRaportDocs(){
+        for(Raport raport : raportDocs){
+            System.out.println(raport.serviceMessage);
+            System.out.println(raport.price);
+
+        }
+        return false;
+    }
+
 }

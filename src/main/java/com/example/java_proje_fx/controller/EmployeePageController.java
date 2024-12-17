@@ -36,6 +36,7 @@ public class EmployeePageController {
 
             // Controller'ı al ve çalışan bilgisini gönder
             HasarlarController controller = loader.getController();
+            controller.setEmployee(employee);
             if (employee != null) {
                 controller.loadData(employee.getService().getDamageDocs());
             }
@@ -53,7 +54,13 @@ public class EmployeePageController {
     private void onRaporEkleClicked() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/raporekle.fxml"));
 
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/com/example/fxml/hasarlar.fxml"));
+
         Pane raporContent = loader.load();
+
+//        HasarlarController controller = loader1.getController();
+//
+//        controller.setEmployee(employee);
 
         mainBorderPane.setCenter(raporContent);
 

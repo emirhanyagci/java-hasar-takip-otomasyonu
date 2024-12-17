@@ -68,7 +68,7 @@ public class Main extends Application {
             bostanci_servis.changeDamageDocStatus(emre,hasar.getId(), StatusType.ACCEPTED);
             bostanci_servis.listDamageDocs();
             bostanci_servis.changeDamageDocStatus(emre,hasar.getId(), StatusType.COMPLETED);
-            Raport rapor = bostanci_servis.createRaportDoc(emre,hasar);
+            Raport rapor = bostanci_servis.createRaportDoc(emre,"Sag on far parca degisimi yapilmistir ve sag on kapi acilmama sorunu giderilmistir", 3000, hasar);
             System.out.println(rapor.serviceMessage);
             bostanci_servis.listDamageDocs();
 
