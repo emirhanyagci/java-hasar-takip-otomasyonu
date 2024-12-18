@@ -59,10 +59,10 @@ public class HasarlarController {
 //        detailsColumn.setCellValueFactory(new PropertyValueFactory<>("damageDetails"));
 
         idColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getId().toString()));
+                new SimpleStringProperty(cellData.getValue().getId()));
 
         detailsColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getDamageDetails().toString()));
+                new SimpleStringProperty(cellData.getValue().getDamageDetails()));
 
         statusColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getStatus().toString()));

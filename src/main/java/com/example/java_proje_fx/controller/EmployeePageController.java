@@ -54,17 +54,9 @@ public class EmployeePageController {
     private void onRaporEkleClicked() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/raporekle.fxml"));
 
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/com/example/fxml/hasarlar.fxml"));
-
         Pane raporContent = loader.load();
 
-//        HasarlarController controller = loader1.getController();
-//
-//        controller.setEmployee(employee);
-
         mainBorderPane.setCenter(raporContent);
-
-        //centerContainer.getChildren().setAll(raporContent);
 
     }
 
