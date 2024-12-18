@@ -1,6 +1,8 @@
 package com.example.java_proje_fx.controller;
 
-import com.example.java_proje_fx.model.Damage;
+import com.example.java_proje_fx.model.Raport;
+import com.example.java_proje_fx.model.Service;
+import com.example.java_proje_fx.model.StatusType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,26 +10,31 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.util.ArrayList;
+
 public class CustomerPageController {
     @FXML
-    private TableView<Damage> customerTable;
+    private TableView<Raport> customerTable;
 
     @FXML
-    private TableColumn<Damage, String> carNameColumn;
+    private TableColumn<Raport, String> carNameColumn;
 
     @FXML
-    private TableColumn<Damage, String> detailsColumn;
+    private TableColumn<Raport, String> detailsColumn;
 
     @FXML
-    private TableColumn<Damage, String> raportColumn;
+    private TableColumn<Raport, String> raportColumn;
 
     @FXML
-    private TableColumn<Damage, String> priceColumn;
+    private TableColumn<Raport, String> priceColumn;
 
     @FXML
-    private TableColumn<Damage, String> stateColumn;
+    private TableColumn<Raport, String> stateColumn;
 
-    private ObservableList<Damage> customerListesi = FXCollections.observableArrayList();
+    private ObservableList<Raport> raportListesi = FXCollections.observableArrayList();
+
+
+    public Raport damage;
 
     public void initialize() {
         // Kolonlara özellik bağlama
@@ -35,15 +42,23 @@ public class CustomerPageController {
 //        detailsColumn.setCellValueFactory(new PropertyValueFactory<>("damageDetails"));
 
         carNameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getCustomer().getCar().getModel().getName()));
+                new SimpleStringProperty(cellData.getValue().getDamageDoc().getCar().getName()));
         detailsColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getDamageDetails()));
+                new SimpleStringProperty(cellData.getValue().getDamageDoc().getDamageDetails()));
         raportColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().get));
+                new SimpleStringProperty(cellData.getValue().serviceMessage));
         priceColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getCustomer().getCar().get));
+                new SimpleStringProperty(cellData.getValue().getPrice().toString()));
         stateColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getStatus()));
+                new SimpleStringProperty(cellData.getValue().getDamageDoc().getStatus().toString()));
+
+        customerTable.setItems(raportListesi);
+
 
     }
+
+    public void loadRaportDocsData(ArrayList<Raport> raports) {
+        raportListesi.setAll(raports);
+    }
+
 }

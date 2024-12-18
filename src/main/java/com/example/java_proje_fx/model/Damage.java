@@ -36,6 +36,6 @@ public class Damage extends Doc{
     }
 
     public Car getCar(){
-        return car;
+        return this.car;
     }
 }

@@ -64,7 +64,7 @@ public class Main extends Application {
             Employee emre = new Employee("Emre","Coruhlu",bostanci_servis);
 
             alianz.addServices(bostanci_servis);
-            Damage hasar = alianz.createDamageDoc(emirhan);
+            Damage hasar = alianz.createDamageDoc(emirhan,"Arabanin sag on fari calismiyor ve sag on kapi sıkısmıs acılmıyor",emirhan.getCar());
             bostanci_servis.changeDamageDocStatus(emre,hasar.getId(), StatusType.ACCEPTED);
             bostanci_servis.listDamageDocs();
             bostanci_servis.changeDamageDocStatus(emre,hasar.getId(), StatusType.COMPLETED);

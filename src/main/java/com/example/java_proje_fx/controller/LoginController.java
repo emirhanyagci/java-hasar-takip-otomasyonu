@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -51,13 +50,17 @@ public class LoginController {
         // Şifre kutusunda Enter tuşuna basıldığında giriş yap
         passwordField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                handleLoginButton();
+                try {
+                    handleLoginButton();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
     @FXML
-    private void handleLoginButton() {
+    private void handleLoginButton() throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -67,7 +70,7 @@ public class LoginController {
             if (user.isEmployee()) {
                 openEmployeeBoard((Employee) user);
             } else {
-                openCustomerBoard(user);
+                openCustomerBoard((Customer) user);
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Giriş Hatası", "Kullanıcı adı veya şifre yanlış.");
@@ -114,6 +117,22 @@ public class LoginController {
         }
     }
 
-    private void openCustomerBoard(User user) {
+    private void openCustomerBoard(Customer customer) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/fxml/customerpage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        // Controller'ı al ve kullanıcı bilgilerini gönder
+        CustomerPageController controller = fxmlLoader.getController();
+
+        if (customer != null) {
+            controller.loadRaportDocsData(customer.getCar().carsRaportDocs);
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Çalışan Paneli");
+        stage.setScene(scene);
+        stage.show();
+
+        Stage currentStage = (Stage) usernameField.getScene().getWindow();
+        currentStage.close();
     }
 }

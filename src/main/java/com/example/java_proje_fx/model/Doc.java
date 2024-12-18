@@ -14,4 +14,8 @@ abstract public class Doc {
         this.user = user;
         this.createdAt = date;
     }
+
+    public User getUser() {
+        return user;
+    }
 }

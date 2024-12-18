@@ -29,7 +29,7 @@ public class Insurance {
         for (Service service : services)
             System.out.println(service.getModelName());
     }
-    public Damage createDamageDoc(Customer user){
+    public Damage createDamageDoc(Customer user, String damageDetails, Car car){
         boolean isInInsurence = false;
         for ( Customer customer : customers){
             if (customer.getId().equals(user.getId())) isInInsurence = true;
@@ -38,10 +38,11 @@ public class Insurance {
         for (Service service : services) {
             if (service.getModelId().equals(user.getModelId())) {
                 //Damage damageDoc = new Damage(user, "Arabanin sag on fari calismiyor ve sag on kapi sıkısmıs acılmıyor");
+                Damage damageDoc = new Damage(user, damageDetails, car);
                 service.addDamageDoc(damageDoc);
+                car.addDamageDoc(damageDoc);
                 return damageDoc;
             }
-
         }
         return null;
     }

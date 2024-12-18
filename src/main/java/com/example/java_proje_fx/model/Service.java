@@ -63,6 +63,7 @@ public class Service {
         if(user.isEmployee()){
             Raport raportDoc = new Raport(user,serviceMasage,price,damageDoc);
             raportDocs.add(raportDoc);
+            damageDoc.getCar().addRaportDocs(raportDoc);
             return raportDoc;
         }else{
             System.out.println("Sadece calisanlar bu islemi yapabilir");
@@ -77,11 +78,29 @@ public class Service {
         return false;
     }
 
-    public Raport getRaportDoc(String id) {
+    public Raport getRaportDoc(Damage damage) {
         for(Raport raport : raportDocs){
-            if (expertModel.getId().equals(id));
-                return
+            if (damage.getDamageDetails().equals(raport.damageDoc.getDamageDetails())){
+                return raport;
+            }
         }
-        return raport;
+        return null;
     }
+
+    public String getPrice(Damage damage){
+        Raport raport = getRaportDoc(damage);
+        Integer price = raport.price;
+        return price.toString();
+    }
+
+    public Car getCar(Damage damage){
+        for(Raport raport : raportDocs){
+            if (damage.getCar().equals(raport.damageDoc.getDamageDetails())){
+                return damage.getCar();
+            }
+        }
+        return null;
+    }
+
+
 }
