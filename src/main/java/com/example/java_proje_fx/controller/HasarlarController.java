@@ -2,7 +2,6 @@ package com.example.java_proje_fx.controller;
 
 import com.example.java_proje_fx.model.Damage;
 import com.example.java_proje_fx.model.Employee;
-import com.example.java_proje_fx.model.StatusType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +24,7 @@ public class HasarlarController {
     private TableView<Damage> hasarTable;
 
     @FXML
-    private TableColumn<Damage, String> idColumn;
+    private TableColumn<Damage, String> damageDocIdColumn;
 
     @FXML
     private TableColumn<Damage, String> detailsColumn;
@@ -55,7 +54,7 @@ public class HasarlarController {
     @FXML
     public void initialize() {
 
-        idColumn.setCellValueFactory(cellData ->
+        damageDocIdColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getId()));
 
         detailsColumn.setCellValueFactory(cellData ->
@@ -71,7 +70,7 @@ public class HasarlarController {
 //                new SimpleStringProperty(cellData.getValue().getCustomer().getId()));
 
         customerNameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getCustomer().getFirstName() + cellData.getValue().getCustomer().getLastName()));
+                new SimpleStringProperty(cellData.getValue().getCustomer().getFirstName() + " " + cellData.getValue().getCustomer().getLastName()));
 
         carNameColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getCustomer().getCar().getName()));

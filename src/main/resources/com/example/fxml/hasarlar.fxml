@@ -10,7 +10,7 @@
 
     <TableView fx:id="hasarTable">
         <columns>
-            <TableColumn text="ID" fx:id="idColumn" />
+            <TableColumn text="Damage Doc ID" fx:id="damageDocIdColumn" />
             <TableColumn text="Details" fx:id="detailsColumn" />
             <TableColumn text="Status" fx:id="statusColumn" />
             <TableColumn text="Date" fx:id="dateColumn" />

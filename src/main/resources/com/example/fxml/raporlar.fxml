@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_proje_fx.controller.RaporlarController">
+    <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="Raporlar" />
+      <TableView fx:id="raporTable" prefHeight="370.0" prefWidth="900.0">
+        <columns>
+          <TableColumn fx:id="customerColumn" prefWidth="130.0" text="Customer Name" />
+          <TableColumn fx:id="serviceMessageColumn" prefWidth="470.0" text="Service Massage" />
+            <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="50.0" text="Price" />
+            <TableColumn fx:id="carNameColumn" minWidth="0.0" prefWidth="75.0" text="Car Name" />
+            <TableColumn fx:id="carYearColumn" prefWidth="70.0" text="Car Year" />
+            <TableColumn fx:id="statusColumn" text="Status" />
+        </columns>
+      </TableView>
+</VBox>

@@ -10,10 +10,10 @@
     <!-- Sol tarafta menü -->
     <left>
         <VBox prefHeight="500.0" prefWidth="140.0" spacing="10" style="-fx-padding: 10; -fx-background-color: #F0F0F0;">
-         <Label fx:id="servisAdi" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="122.0" style="-fx-font-size:16; -fx-font-weight:bold;" text="Servis Adı" textAlignment="CENTER" />
+         <Label fx:id="servisAdi" layoutX="20.0" layoutY="20.0" prefHeight="60.0" prefWidth="120.0" style="-fx-font-size:16; -fx-font-weight:bold;" text="Servis Adı" textAlignment="CENTER" wrapText="true" />
             <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="Özellikler" />
             <Button onAction="#onHasarlarClicked" style="-fx-pref-width: 120;" text="Hasarlar" />
-            <Button onAction="#onRaporEkleClicked" style="-fx-pref-width: 120;" text="Rapor Ekle" />
+            <Button onAction="#onRaporlarClicked" style="-fx-pref-width: 120;" text="Raporlar" />
             <Button style="-fx-pref-width: 120;" text="Sorgulama" />
             <Button style="-fx-pref-width: 120;" text="Menu item" />
             <Button style="-fx-pref-width: 120;" text="Menu item" />

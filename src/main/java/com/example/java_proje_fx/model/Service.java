@@ -10,6 +10,7 @@ public class Service {
     private Model expertModel;
     public ArrayList<Damage> damageDocs;
     public ArrayList<Raport> raportDocs;
+
     public Service(String name, String address, Model model) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
@@ -17,10 +18,13 @@ public class Service {
         this.expertModel = model;
         this.damageDocs = new ArrayList<Damage>();
         this.raportDocs = new ArrayList<Raport>();
-
     }
+
     public String getId(){
         return this.id;
+    }
+    public Model getExpertModel() {
+        return expertModel;
     }
     String getModelName(){
         return this.expertModel.name;
@@ -80,6 +84,10 @@ public class Service {
         return false;
     }
 
+    public ArrayList<Raport> getRaportDocs() {
+        return raportDocs;
+    }
+
     public Raport getRaportDoc(Damage damage) {
         for(Raport raport : raportDocs){
             if (damage.getDamageDetails().equals(raport.damageDoc.getDamageDetails())){
@@ -87,12 +95,6 @@ public class Service {
             }
         }
         return null;
-    }
-
-    public String getPrice(Damage damage){
-        Raport raport = getRaportDoc(damage);
-        Integer price = raport.price;
-        return price.toString();
     }
 
     public Car getCar(Damage damage){
