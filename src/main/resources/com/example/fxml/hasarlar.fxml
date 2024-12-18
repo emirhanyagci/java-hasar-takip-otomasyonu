@@ -17,9 +17,8 @@
             <!-- <TableColumn text="Customer ID" fx:id="customerIdColumn" /> -->
             <TableColumn text="Customer Name" fx:id="customerNameColumn" />
             <TableColumn text="Car Name" fx:id="carNameColumn" />
-</columns>
-
-</TableView>
+        </columns>
+    </TableView>
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>
          <Button onAction="#onRaporEkleClicked" layoutX="10.0" layoutY="10.0" text="Rapor Ekle">

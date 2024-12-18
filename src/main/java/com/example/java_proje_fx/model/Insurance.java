@@ -37,7 +37,7 @@ public class Insurance {
         if (!isInInsurence) return null;
         for (Service service : services) {
             if (service.getModelId().equals(user.getModelId())) {
-                Damage damageDoc = new Damage(user, "Arabanin sag on fari calismiyor ve sag on kapi sıkısmıs acılmıyor");
+                //Damage damageDoc = new Damage(user, "Arabanin sag on fari calismiyor ve sag on kapi sıkısmıs acılmıyor");
                 service.addDamageDoc(damageDoc);
                 return damageDoc;
             }

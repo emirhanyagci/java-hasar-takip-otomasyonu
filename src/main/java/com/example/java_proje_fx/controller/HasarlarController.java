@@ -148,15 +148,15 @@ public class HasarlarController {
 
 
     //deneme verileri oluşturucu
-    private void testData() {
-        // Örnek veri ekleme
-        Damage d1 = new Damage(null, "Arka tampon ezildi");
-        Damage d2 = new Damage(null, "Sağ ön kapı çizik");
-        d1.status = StatusType.ACCEPTED;
-        d2.status = StatusType.COMPLETED;
-        hasarlarListesi.add(d1);
-        hasarlarListesi.add(d2);
-    }
+//    private void testData() {
+//        // Örnek veri ekleme
+//        Damage d1 = new Damage(null, "Arka tampon ezildi");
+//        Damage d2 = new Damage(null, "Sağ ön kapı çizik");
+//        d1.status = StatusType.ACCEPTED;
+//        d2.status = StatusType.COMPLETED;
+//        hasarlarListesi.add(d1);
+//        hasarlarListesi.add(d2);
+//    }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;

@@ -40,7 +40,6 @@ public class Service {
         for(Damage damageDoc : damageDocs){
             System.out.println(damageDoc.damageDetails);
             System.out.println(damageDoc.status);
-
         }
         return false;
     }
@@ -74,9 +73,15 @@ public class Service {
         for(Raport raport : raportDocs){
             System.out.println(raport.serviceMessage);
             System.out.println(raport.price);
-
         }
         return false;
     }
 
+    public Raport getRaportDoc(String id) {
+        for(Raport raport : raportDocs){
+            if (expertModel.getId().equals(id));
+                return
+        }
+        return raport;
+    }
 }

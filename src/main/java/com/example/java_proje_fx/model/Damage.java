@@ -4,13 +4,16 @@ import java.util.UUID;
 
 public class Damage extends Doc{
     private String id;
-    String damageDetails;
+    public String damageDetails;
     public StatusType status;
-    public Damage(Customer user, String damageDetails) {
+    public Car car;
+
+    public Damage(Customer user, String damageDetails, Car car) {
         super(user);
         status = StatusType.PENDING;
         this.id = UUID.randomUUID().toString();
         this.damageDetails = damageDetails;
+        this.car = car;
     }
 
     public String getDamageDetails() {
@@ -30,5 +33,9 @@ public class Damage extends Doc{
             return (Customer) this.user;
         }
         return null;
+    }
+
+    public Car getCar(){
+        return car;
     }
 }
