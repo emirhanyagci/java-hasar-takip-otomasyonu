@@ -54,9 +54,6 @@ public class HasarlarController {
 
     @FXML
     public void initialize() {
-        // Kolonlara özellik bağlama
-//        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        detailsColumn.setCellValueFactory(new PropertyValueFactory<>("damageDetails"));
 
         idColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getId()));
@@ -79,9 +76,8 @@ public class HasarlarController {
         carNameColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getCustomer().getCar().getName()));
 
-//        carYearColumn.setCellValueFactory(cellData ->
-//                new SimpleStringProperty(cellData.getValue().getCustomer().getCar().getYear()));
-
+        carYearColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getCustomer().getCar().getYear()));
 
         //eğer yorum satırı olmazsa employee'nin verilerinin üstüne yazar, employee'ninkiler gözükmez
         // Test verileriyle tabloyu doldurma
@@ -95,8 +91,6 @@ public class HasarlarController {
     public void loadData(ArrayList<Damage> hasarList) {
         hasarlarListesi.setAll(hasarList);
     }
-
-
 
     private String formatDate(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -133,6 +127,7 @@ public class HasarlarController {
             controller.setRaporEkle(damage);
             controller.setEmployee(employee);
             controller.setDamage(damage);
+            controller.setHasarlarController(this); // HasarlarController referansını ilet
 
             // Yeni sahne oluştur
             Stage stage = new Stage();
@@ -145,6 +140,12 @@ public class HasarlarController {
         }
     }
 
+    public void refreshTable() {
+        if (employee != null) {
+            hasarlarListesi.setAll(employee.getService().getDamageDocs());
+            hasarTable.refresh();
+        }
+    }
 
 
     //deneme verileri oluşturucu

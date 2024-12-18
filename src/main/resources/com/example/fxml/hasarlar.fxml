@@ -14,9 +14,9 @@
             <TableColumn text="Details" fx:id="detailsColumn" />
             <TableColumn text="Status" fx:id="statusColumn" />
             <TableColumn text="Date" fx:id="dateColumn" />
-            <!-- <TableColumn text="Customer ID" fx:id="customerIdColumn" /> -->
             <TableColumn text="Customer Name" fx:id="customerNameColumn" />
             <TableColumn text="Car Name" fx:id="carNameColumn" />
+            <TableColumn text="Car Year" fx:id="carYearColumn" />
         </columns>
     </TableView>
    <HBox prefHeight="100.0" prefWidth="200.0">

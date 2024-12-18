@@ -63,6 +63,7 @@ public class Service {
         if(user.isEmployee()){
             Raport raportDoc = new Raport(user,serviceMasage,price,damageDoc);
             raportDocs.add(raportDoc);
+
             damageDoc.getCar().addRaportDocs(raportDoc);
             return raportDoc;
         }else{
@@ -74,6 +75,7 @@ public class Service {
         for(Raport raport : raportDocs){
             System.out.println(raport.serviceMessage);
             System.out.println(raport.price);
+
         }
         return false;
     }
